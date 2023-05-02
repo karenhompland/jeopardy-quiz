@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jeopardy</title>
+    <link rel="stylesheet" href="styling.css">
+</head>
+<script src="script.js"></script>
+
+<body onload="onLoad()">
+    <div id="qContainer" class="question">
+        <p class="editable" id="qText" class="qText"></p>
+        <img id="qImg" class="qImg" src="">
+        <button onclick="closeQ()" class="qClose">Close</button>
+    </div>
+    <div class="heading">
+        <!--<img height="100%" src="./bilder/karenlquiz.png" >-->
+        <div class="adminButtonGroup">
+            <button class="adminButton" id="editButton" onclick="editMode()">Edit Game</button>
+            <button class="adminButton" id="restartButton" onclick="resetGame()">Restart Game</button>
+            <button class="adminButton" id="saveButton" style="display: none;" onclick="saveButton()">Save</button>
+            <button class="adminButton" id="playButton" style="display: none;" onclick="playMode()">Save and Play</button>
+        </div>
+        <h1 id="heading" class="editable">Quiz</h1>
+        <div class="scoreGroup">
+            <div class="score" id="team1" style="display: none">
+                <button class="scorebutton" onclick="scoreClickMin(this.id)" id="1">-</button>
+                <div class="flexcolumn">
+                    <p class="editable" style="margin: 0; font-size: medium;">Team 1</p>
+                    <p style="margin: 0;" id="score1">0</p>
+                </div>
+                <button class="scorebutton" onclick="scoreClickPlus(this.id)" id="1">+</button>
+            </div>
+            <div class="score" id="team2" style="display: none">
+                <button class="scorebutton" onclick="scoreClickMin(this.id)" id="2">-</button>
+                <div class="flexcolumn">
+                    <p class="editable" style="margin: 0; font-size: medium;">Team 2</p>
+                    <p style="margin: 0;" id="score2">0</p>
+                </div>
+                <button class="scorebutton" onclick="scoreClickPlus(this.id)" id="2">+</button>
+            </div>
+            <div class="score" id="team3" style="display: none">
+                <button class="scorebutton" onclick="scoreClickMin(this.id)" id="3">-</button>
+                <div class="flexcolumn">
+                    <p class="editable" style="margin: 0; font-size: medium;">Team 3</p>
+                    <p style="margin: 0;" id="score3">0</p>
+                </div>
+                <button class="scorebutton" onclick="scoreClickPlus(this.id)" id="3">+</button>
+            </div>
+            <div class="score" id="team4" style="display: none">
+                <button class="scorebutton" onclick="scoreClickMin(this.id)" id="4">-</button>
+                <div class="flexcolumn">
+                    <p class="editable" style="margin: 0; font-size: medium;">Team 4</p>
+                    <p style="margin: 0;" id="score4">0</p>
+                </div>
+                <button class="scorebutton" onclick="scoreClickPlus(this.id)" id="4">+</button>
+            </div>
+            <div class="score" id="team5" style="display: none">
+                <button class="scorebutton" onclick="scoreClickMin(this.id)" id="5">-</button>
+                <div class="flexcolumn">
+                    <p class="editable" style="margin: 0; font-size: medium;">Team 5</p>
+                    <p style="margin: 0;" id="score5">0</p>
+                </div>
+                <button class="scorebutton" onclick="scoreClickPlus(this.id)" id="5">+</button>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <button class="adminButton" style="display: none;" id="plusPlayer" onclick="plusPlayer()">+</button>
+                <button class="adminButton" style="display: none;" id="minPlayer" onclick="minPlayer()">-</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="category editable" id="category1">South Africa</h1>
+        <h1 class="category editable" id="category2">Music</h1>
+        <h1 class="category editable" id="category3">Drinks</h1>
+        <h1 class="category editable" id="category4">Challenge</h1>
+        <h1 class="category editable" id="category5">Sport</h1>
+        <!--<h1 class="category">Bilder</h1>-->
+        <button id="category1_1" onclick="onClick(this.id)" class="one">1</button>
+        <button id="category2_1" onclick="onClick(this.id)" class="one">1</button>
+        <button id="category3_1" onclick="onClick(this.id)" class="one">1</button>
+        <button id="category4_1" onclick="onClick(this.id)" class="one">1</button>
+        <button id="category5_1" onclick="onClick(this.id)" class="one">1</button>
+        <!--<button id="category6_1" onclick="onClick(this.id)" class="one ">1</button>-->
+        <button id="category1_2" onclick="onClick(this.id)" class="two sound">2</button>
+        <button id="category2_2" onclick="onClick(this.id)" class="two">2</button>
+        <button id="category3_2" onclick="onClick(this.id)" class="two">2</button>
+        <button id="category4_2" onclick="onClick(this.id)" class="two">2</button>
+        <button id="category5_2" onclick="onClick(this.id)" class="two">2</button>
+        <!--<button id="category6_2"  onclick="onClick(this.id)" class="two">2</button>-->
+        <button id="category1_3" onclick="onClick(this.id)" class="three">3</button>
+        <button id="category2_3" onclick="onClick(this.id)" class="three sound">3</button>
+        <button id="category3_3" onclick="onClick(this.id)" class="three">3</button>
+        <button id="category4_3" onclick="onClick(this.id)" class="three">3</button>
+        <button id="category5_3" onclick="onClick(this.id)" class="three">3</button>
+        <!--<button id="category6_3" onclick="onClick(this.id)" class="three">3</button>-->
+        <button id="category1_4" onclick="onClick(this.id)" class="four">4</button>
+        <button id="category2_4" onclick="onClick(this.id)" class="four">4</button>
+        <button id="category3_4" onclick="onClick(this.id)" class="four">4</button>
+        <button id="category4_4" onclick="onClick(this.id)" class="four">4</button>
+        <button id="category5_4" onclick="onClick(this.id)" class="four sound">4</button>
+        <!--<button id="category6_4" onclick="onClick(this.id)" class="four">4</button>-->
+        <button id="category1_5" onclick="onClick(this.id)" class="five">5</button>
+        <button id="category2_5" onclick="onClick(this.id)" class="five sound">5</button>
+        <button id="category3_5" onclick="onClick(this.id)" class="five">5</button>
+        <button id="category4_5" onclick="onClick(this.id)" class="five">5</button>
+        <button id="category5_5" onclick="onClick(this.id)" class="five">5</button>
+        <!--<button id="category6_5" onclick="onClick(this.id)" class="five">5</button>-->
+    </div>
+
+</body>
+
+</html>

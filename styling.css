@@ -1,0 +1,140 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr;
+    height: 100%;
+    width: 100%;
+    margin-top: 0px;
+}
+
+.heading {
+    margin: 0;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    font-size: xx-large;
+    color: white;
+    height: 170px;
+}
+
+.scoreGroup {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.adminButtonGroup {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 250px;
+}
+
+.one {
+    background-color: #ffbe0b;
+}
+
+.two {
+    background-color: #fb5607;
+}
+
+.three{
+    background-color: #ff006e;
+}
+
+.four {
+    background-color: #8338ec;
+}
+
+.five {
+    background-color: #1b6ae9;
+}
+
+.qClose {
+    height: 40px;
+    width: 60px;
+    color: black;
+
+}
+
+html {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    /*background-image: url('bilder/background.png');*/
+    background-color:rgb(127, 142, 255);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+button {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
+    margin: 4px;
+    border-radius: 8px;
+    border: 1px solid white;
+    height: 80px;
+    color: white;
+}
+
+.category {
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.323);
+    border-radius: 10px;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    visibility: hidden;
+    margin-left: 100px;
+    margin-top: 130px;
+    width: 80%;
+    height: 70%;
+    background-color: #8338ec;
+    color: white;
+    border-radius: 8px;
+    font-size: xx-large;
+    padding: 30px;
+}
+
+.qImg {
+    max-height: 300px;
+    margin-bottom: 20px;
+}
+
+.score {
+    background-color: rgba(0, 0, 0, 0.197);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.scorebutton {
+    height: fit-content;
+    color: #000000;
+}
+
+.flexcolumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.adminButton {
+    height: fit-content;
+    color: #000000;
+    max-width: 150px;
+    min-width: 40px;
+    
+}
