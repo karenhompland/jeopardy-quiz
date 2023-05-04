@@ -69,7 +69,7 @@ function enableEditMode() {
     const editableElements = document.querySelectorAll('.editable');
     editableElements.forEach(element => {
         element.contentEditable = "true";
-        element.style.text="solid 1px #FFFFFF99";
+        element.style.textDecoration="underline 2px #FFFFFF99";
     });
 }
 
@@ -92,7 +92,7 @@ function playMode() {
     const editableElements = document.querySelectorAll('.editable');
     editableElements.forEach(element => {
         element.contentEditable = "false";
-        element.style.outline="none";
+        element.style.textDecoration="none";
     });
 }
 
