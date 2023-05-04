@@ -101,6 +101,10 @@ function resetGame() {
         scoreList=Array(numOfPlayers).fill(0);
         localStorage.setItem('scoreList',scoreList);
         updateAllScores();
+        document.querySelectorAll('.opened').forEach(element => {
+            element.style = "";
+            element.classList.remove('opened');
+        });
     }
 
 }
