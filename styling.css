@@ -76,6 +76,7 @@ button {
     border: 1px solid white;
     height: 80px;
     color: white;
+    max-width: 300px;
 }
 
 .category {
