@@ -1,5 +1,5 @@
 var scoreList;
-var editmode = false;
+var editMode = false;
 var numOfPlayers;
 
 function onLoad() {
@@ -58,8 +58,8 @@ function updateAllScores(){
 
 }
 
-function editMode() {
-    editmode = true;
+function enableEditMode() {
+    editMode = true;
     document.getElementById("plusPlayer").style.display = "block";
     document.getElementById("minPlayer").style.display = "block";
     document.getElementById("saveButton").style.display = "block";
@@ -69,6 +69,7 @@ function editMode() {
     const editableElements = document.querySelectorAll('.editable');
     editableElements.forEach(element => {
         element.contentEditable = "true";
+        element.style.text="solid 1px #FFFFFF99";
     });
 }
 
@@ -82,7 +83,8 @@ function saveButton() {
 function playMode() {
     saveButton();
     editMode = false;
-    document.getElementById("playerAmount").style.display = "none";
+    document.getElementById("plusPlayer").style.display = "none";
+    document.getElementById("minPlayer").style.display = "none";
     document.getElementById("saveButton").style.display = "none";
     document.getElementById("playButton").style.display = "none";
     document.getElementById("editButton").style.display = "block";
@@ -90,6 +92,7 @@ function playMode() {
     const editableElements = document.querySelectorAll('.editable');
     editableElements.forEach(element => {
         element.contentEditable = "false";
+        element.style.outline="none";
     });
 }
 
@@ -109,7 +112,7 @@ function onClick(id) {
         documentElement.style = "";
         documentElement.classList.remove('opened');
     }
-    else if (!editmode) {
+    else if (!editMode) {
         documentElement.style.backgroundColor = "#2a2a2a";
         documentElement.style.color = "#2a2a2a";
         documentElement.classList.add('opened');
@@ -151,7 +154,12 @@ function closeQ() {
 function plusPlayer(){
     if(numOfPlayers<5){
         numOfPlayers+=1;
-        scoreList.push(0);
+        if(numOfPlayers==1){
+            scoreList=[0];
+        }
+        else {
+            scoreList.push(0);
+        }
         document.getElementById(`team${numOfPlayers}`).style.display="flex";
         //document.getElementById(`team${numOfPlayers}`).innerHTML=scoreList[numOfPlayers];
     }
