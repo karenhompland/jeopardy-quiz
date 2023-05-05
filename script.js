@@ -1,5 +1,4 @@
 var scoreList;
-var editMode = false;
 var numOfPlayers;
 
 function onLoad() {
@@ -82,7 +81,6 @@ function showQuestions() {
 }
 
 function enableEditMode() {
-    editMode = true;
     document.getElementById("plusPlayer").style.display = "block";
     document.getElementById("minPlayer").style.display = "block";
     document.getElementById("saveButton").style.display = "block";
@@ -112,7 +110,6 @@ function saveButton() {
 
 function playMode(save) {
     if (save) { saveButton(); }
-    editMode = false;
     document.getElementById("plusPlayer").style.display = "none";
     document.getElementById("minPlayer").style.display = "none";
     document.getElementById("saveButton").style.display = "none";
@@ -146,7 +143,7 @@ function onClick(id) {
         documentElement.style = "";
         documentElement.classList.remove('opened');
     }
-    else if (!editMode) {
+    else {
         documentElement.style.backgroundColor = "#2a2a2a";
         documentElement.style.color = "#2a2a2a";
         documentElement.classList.add('opened');
