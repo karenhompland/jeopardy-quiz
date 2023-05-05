@@ -5,9 +5,9 @@ var numOfPlayers;
 function onLoad() {
     /*readTextFile("./spm.json", function (text) {
         qData = JSON.parse(text);
-        qBox = document.getElementById('qContainer');
         img = document.getElementById('qImg');
     });*/
+    qBox = document.getElementById('qContainer');
     checkLocalStorage();
     for (const x of Array(numOfPlayers).keys()) {
         document.getElementById(`team${x + 1}`).style.display = "flex";
@@ -223,6 +223,11 @@ function clearStorage() {
     if (confirm("Do you want to clear all data? This will delete all questions and text filled in.")) {
         localStorage.clear();
         onLoad();
+        playMode();
+        document.querySelectorAll('.opened').forEach(element => {
+            element.style = "";
+            element.classList.remove('opened');
+        });
     }
 }
 
