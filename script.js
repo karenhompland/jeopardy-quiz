@@ -3,11 +3,11 @@ var editMode = false;
 var numOfPlayers;
 
 function onLoad() {
-    readTextFile("./spm.json", function (text) {
+    /*readTextFile("./spm.json", function (text) {
         qData = JSON.parse(text);
         qBox = document.getElementById('qContainer');
         img = document.getElementById('qImg');
-    });
+    });*/
     checkLocalStorage();
     for (const x of Array(numOfPlayers).keys()) {
         document.getElementById(`team${x + 1}`).style.display = "flex";
@@ -56,7 +56,6 @@ function updateAllScores() {
     for (const x of Array(scoreList.length).keys()) {
         document.getElementById(`score${x + 1}`).innerHTML = scoreList[x];
     }
-
 }
 
 function showButtons() {
@@ -88,6 +87,7 @@ function enableEditMode() {
     document.getElementById("minPlayer").style.display = "block";
     document.getElementById("saveButton").style.display = "block";
     document.getElementById("playButton").style.display = "block";
+    document.getElementById("clearButton").style.display = "block";
     document.getElementById("editButton").style.display = "none";
     document.getElementById("restartButton").style.display = "none";
     showQuestions();
@@ -96,13 +96,6 @@ function enableEditMode() {
         element.contentEditable = "true";
         element.style.textDecoration = "underline 2px #FFFFFF99";
     });
-    /*const qContainer = document.getElementById("qContainer");
-    qContainer.addEventListener("keydown", function (event) {
-        if (event.target.nodeName === "BUTTON" && event.key === " ") {
-            event.preventDefault();
-            event.target.innerHTML+=" ";
-        }
-    });*/
 }
 
 
@@ -124,6 +117,7 @@ function playMode() {
     document.getElementById("minPlayer").style.display = "none";
     document.getElementById("saveButton").style.display = "none";
     document.getElementById("playButton").style.display = "none";
+    document.getElementById("clearButton").style.display = "none";
     document.getElementById("editButton").style.display = "block";
     document.getElementById("restartButton").style.display = "block";
     showButtons();
@@ -144,9 +138,7 @@ function resetGame() {
             element.classList.remove('opened');
         });
     }
-
 }
-
 
 function onClick(id) {
     const documentElement = document.getElementById(id);
@@ -170,12 +162,6 @@ function onClick(id) {
             audio.play();
         }
     }
-    else if (editMode) {
-
-
-    }
-
-
 }
 
 function scoreClickMin(id) {
@@ -207,7 +193,6 @@ function plusPlayer() {
             scoreList.push(0);
         }
         document.getElementById(`team${numOfPlayers}`).style.display = "flex";
-        //document.getElementById(`team${numOfPlayers}`).innerHTML=scoreList[numOfPlayers];
     }
     if (numOfPlayers == 5) {
         document.getElementById("plusPlayer").disabled = true;
@@ -232,5 +217,12 @@ function minPlayer() {
 function savePlayers() {
     localStorage.setItem("numPlayers", numOfPlayers);
     localStorage.setItem("scoreList", scoreList);
+}
+
+function clearStorage() {
+    if (confirm("Do you want to clear all data? This will delete all questions and text filled in.")) {
+        localStorage.clear();
+        onLoad();
+    }
 }
 
