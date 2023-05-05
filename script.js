@@ -110,8 +110,8 @@ function saveButton() {
     });
 }
 
-function playMode() {
-    saveButton();
+function playMode(save) {
+    if (save) { saveButton(); }
     editMode = false;
     document.getElementById("plusPlayer").style.display = "none";
     document.getElementById("minPlayer").style.display = "none";
@@ -223,7 +223,7 @@ function clearStorage() {
     if (confirm("Do you want to clear all data? This will delete all questions and text filled in.")) {
         localStorage.clear();
         onLoad();
-        playMode();
+        playMode(false);
         document.querySelectorAll('.opened').forEach(element => {
             element.style = "";
             element.classList.remove('opened');
