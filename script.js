@@ -1,7 +1,6 @@
 var scoreList;
 var editMode = false;
 var numOfPlayers;
-var buttonText = [];
 
 function onLoad() {
     readTextFile("./spm.json", function (text) {
@@ -13,6 +12,7 @@ function onLoad() {
     for (const x of Array(numOfPlayers).keys()) {
         document.getElementById(`team${x + 1}`).style.display = "flex";
     }
+    showButtons();
 }
 
 function readTextFile(file, callback) {
@@ -59,6 +59,29 @@ function updateAllScores() {
 
 }
 
+function showButtons() {
+    const qBox = document.querySelectorAll('div.container > div.fillIn');
+    qBox.forEach(element => {
+        element.style.display = "none";
+    });
+    const qButtons = document.querySelectorAll('div.container > button');
+    qButtons.forEach(element => {
+        element.style.display = "block";
+    });
+}
+
+function showQuestions() {
+    const qButtons = document.querySelectorAll('div.container > button');
+    qButtons.forEach(element => {
+        element.style.display = "none";
+    });
+    const qBox = document.querySelectorAll('div.container > div.fillIn');
+    qBox.forEach(element => {
+        element.style.display = "block";
+        localStorage.getItem(element.id) == null ? element.innerHTML = "" : element.innerHTML = `${localStorage.getItem(element.id)}`;
+    });
+}
+
 function enableEditMode() {
     editMode = true;
     document.getElementById("plusPlayer").style.display = "block";
@@ -67,13 +90,7 @@ function enableEditMode() {
     document.getElementById("playButton").style.display = "block";
     document.getElementById("editButton").style.display = "none";
     document.getElementById("restartButton").style.display = "none";
-    const qButtons = document.querySelectorAll('div.container > button');
-    qButtons.forEach(element => {
-        buttonText.push(element.innerHTML);
-        localStorage.getItem(element.id) == null ? element.innerHTML = `<p contentEditable=true></p>` : element.innerHTML = `<p contentEditable=true>${localStorage.getItem(element.id)}</p>`;
-        element.style.backgroundColor = "#2a2a2a";
-        element.style.color = "#ffffff";
-    });
+    showQuestions();
     const editableElements = document.querySelectorAll('.editable');
     editableElements.forEach(element => {
         element.contentEditable = "true";
@@ -94,9 +111,9 @@ function saveButton() {
     for (const x of Array(5).keys()) {
         localStorage.setItem(`category${x + 1}`, document.getElementById(`category${x + 1}`).innerHTML);
     }
-    const qButtons = document.querySelectorAll('div.container > button');
+    const qButtons = document.querySelectorAll('div.container > div.fillIn');
     qButtons.forEach(element => {
-        localStorage.setItem(element.id, element.firstChild.innerHTML);
+        localStorage.setItem(element.id, element.innerHTML);
     });
 }
 
@@ -109,13 +126,7 @@ function playMode() {
     document.getElementById("playButton").style.display = "none";
     document.getElementById("editButton").style.display = "block";
     document.getElementById("restartButton").style.display = "block";
-    const qButtons = document.querySelectorAll('div.container > button');
-    var counter = 0;
-    qButtons.forEach(element => {
-        element.innerHTML = buttonText[counter];
-        counter++;
-        element.style = "";
-    });
+    showButtons();
     const editableElements = document.querySelectorAll('.editable');
     editableElements.forEach(element => {
         element.contentEditable = "false";
